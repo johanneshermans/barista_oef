@@ -1,7 +1,17 @@
+header {
+  background-color: var(--backgroundColor);
+  padding: 3em;
+}
+
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
   color: var(--textColor);
   font-variant-caps: small-caps;
   position: relative;
+}
+
+.h2-like {
+  text-transform: uppercase;
 }
