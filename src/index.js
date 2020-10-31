@@ -18,7 +18,7 @@ import coffees from './coffees.json';
       $priceList.innerHTML += `<li class="price">
           <a class="price__button flex">
             <span class="price__button__wrapper">
-              <span class="price__button__name">${drink.name}</span> <br>
+              <span class="price__button__name" data-item="${drink.name}">${drink.name}</span> <br>
               <span class="price__button__amount">&euro; ${drink.prices.small}</span>
             </span>
             <span class="price__button__plus">+</span>
@@ -27,18 +27,18 @@ import coffees from './coffees.json';
     });
   };
 
-  const getClickedDrink = () => {
-    console.log(`test`);
-    const element = document.querySelector(``);
-    const text = element.innerText || element.textContent;
-    element.innerHTML = text;
+  const getClickedDrink = e => {
+    const currentDrink = e.currentTarget.querySelector(`.price__button__name`).innerHTML;
+    const currentPrice = e.currentTarget.querySelector(`.price__button__amount`).innerHTML;
+    console.log(currentDrink);
+    console.log(currentPrice);
   };
 
 
   const init = () => {
     JSONdata();
     printDrinks();
-    document.querySelector(`.price__button`).addEventListener(`click`, getClickedDrink);
+    document.querySelectorAll(`.price__button`).forEach($button => $button.addEventListener(`click`, getClickedDrink));
   };
   init();
 }
