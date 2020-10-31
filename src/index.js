@@ -1,8 +1,44 @@
-import "./style.css";
-import { devineLog } from "./js/utility/helpers";
+import './style.css';
+import coffees from './coffees.json';
 
-devineLog("Hey, ik ben een JS file");
-const arr = [1 , 2,  3];
+{
+  const $priceList = document.querySelector(`.prices__list`);
+  const allDrinks = [];
 
-const ES6Stuff = () => devineLog("Ik kan ES6 stuff aan", ...arr);
-ES6Stuff();
+
+  const JSONdata = () => {
+    const coffee = coffees.coffees;
+    for (let i = 0; i < 4; i++) {
+      allDrinks.push(coffee[i]);
+    }
+  };
+
+  const printDrinks = () => {
+    allDrinks.forEach(drink => {
+      $priceList.innerHTML += `<li class="price">
+          <a class="price__button flex">
+            <span class="price__button__wrapper">
+              <span class="price__button__name">${drink.name}</span> <br>
+              <span class="price__button__amount">&euro; ${drink.prices.small}</span>
+            </span>
+            <span class="price__button__plus">+</span>
+          </a>
+        </li>`;
+    });
+  };
+
+  const getClickedDrink = () => {
+    console.log(`test`);
+    const element = document.querySelector(``);
+    const text = element.innerText || element.textContent;
+    element.innerHTML = text;
+  };
+
+
+  const init = () => {
+    JSONdata();
+    printDrinks();
+    document.querySelector(`.price__button`).addEventListener(`click`, getClickedDrink);
+  };
+  init();
+}
