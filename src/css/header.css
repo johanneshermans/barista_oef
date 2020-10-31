@@ -15,3 +15,14 @@ h1 {
 .h2-like {
   text-transform: uppercase;
 }
+
+.logo {
+  display: none;
+}
+
+@media screen and (max-width: 411px) {
+
+  .logo {
+    display: block;
+  }
+}

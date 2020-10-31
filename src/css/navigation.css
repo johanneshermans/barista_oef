@@ -1,0 +1,18 @@
+nav {
+  background-color: black;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  width: 100%;
+}
+
+.nav__button {
+  width: 30%;
+  text-align: center;
+}
+
+.nav__img {
+  margin: 0 auto;
+}
