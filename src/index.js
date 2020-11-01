@@ -5,7 +5,8 @@ import coffees from './coffees.json';
   const $priceList = document.querySelector(`.prices__list`);
   const $allOrders = document.querySelector(`.all__orders`);
   const allDrinks = [];
-  let currentDrinkList = [];
+  const currentDrinkList = [];
+  let localDrinkList = [];
 
   const makeNum = number => {
     const removeSpace = number.replace(/\s/g, '');
@@ -36,37 +37,43 @@ import coffees from './coffees.json';
     });
   };
 
+
+
   const getClickedDrink = e => {
-    currentDrinkList = [];
+    localDrinkList = [];
     const currentDrink = e.currentTarget.querySelector(`.price__button__name`).innerHTML;
     const currentPrice = e.currentTarget.querySelector(`.price__button__amount`).innerHTML;
     addCurrentDrink(currentDrink, makeNum(currentPrice));
   };
-
-
 
   const addCurrentDrink = (drink, price) => {
     const drinkArray = [];
     drinkArray.push(drink);
     drinkArray.push(price);
     currentDrinkList.push(drinkArray);
-    printCurrentDrinks();
+    localDrinkList.push(drinkArray);
+    const test = checkArray(currentDrinkList);
+    console.log(test);
+    printCurrentDrinks(localDrinkList);
   };
 
-  const printCurrentDrinks = () => {
+  const checkArray = array => {
+    return new Set(array).size !== array.length;
+  };
 
-    currentDrinkList.forEach(drink => {
-      $allOrders.innerHTML += `<ul class="orders">
+  const printCurrentDrinks = arr => {
+    arr.forEach(drink => {
+      $allOrders.innerHTML += `
             <li class="order">
               <span class="order__name">
-                <span class="order__amount"> x</span> ${drink[0]}
+                <span class="order__amount"> 1x</span> ${drink[0]}
               </span>
               <span class="order__price">&euro; ${drink[1]}</span>
               <button class="remove">
                 x
               </button>
             </li>
-          </ul>`;
+            <hr>`;
     });
   };
 

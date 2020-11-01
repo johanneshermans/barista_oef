@@ -13,16 +13,45 @@
 
 .order__name {
   width: 70%;
-  font-size: 1.5em;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+hr {
+  opacity: 30%;
 }
 
 .order__remove {
   width: 30%;
 }
 
+.title_mini, .order {
+  padding: 1em 3em;
+}
+
+.title_mini {
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 3em;
+}
+
+.order__price {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.order__amount {
+  color: #b2422a;
+  font-weight: 600;
+}
+
 .total {
   font-size: 2em;
   padding: 1em 1.5em;
+}
+
+.remove {
+  -webkit-appearance: none;
 }
 
 @media screen and (max-width: 411px) {
