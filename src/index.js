@@ -4,9 +4,18 @@ import coffees from './coffees.json';
 {
   const $priceList = document.querySelector(`.prices__list`);
   const $allOrders = document.querySelector(`.all__orders`);
+  const $totalPrice = document.querySelector(`.total__price__real`);
+  const $remove = document.querySelector(`.remove`);
   const allDrinks = [];
   const currentDrinkList = [];
   let localDrinkList = [];
+  let totalPrice = 0;
+
+  const subtract = (Price, newOrder) => {
+    const sum = Price + newOrder;
+    totalPrice = sum;
+    return sum;
+  };
 
   const makeNum = number => {
     const removeSpace = number.replace(/\s/g, '');
@@ -15,6 +24,7 @@ import coffees from './coffees.json';
     const toSring = removeSymbol.join("");
     return parseFloat(toSring);
   };
+
 
   const JSONdata = () => {
     const coffee = coffees.coffees;
@@ -37,13 +47,17 @@ import coffees from './coffees.json';
     });
   };
 
-
-
   const getClickedDrink = e => {
     localDrinkList = [];
     const currentDrink = e.currentTarget.querySelector(`.price__button__name`).innerHTML;
     const currentPrice = e.currentTarget.querySelector(`.price__button__amount`).innerHTML;
     addCurrentDrink(currentDrink, makeNum(currentPrice));
+  };
+
+  const getRemoveDrink = e => {
+    console.log(`test`);
+    const currentPrice = e.currentTarget.querySelector(`.order__price`).innerHTML;
+    console.log(currentPrice);
   };
 
   const addCurrentDrink = (drink, price) => {
@@ -54,6 +68,7 @@ import coffees from './coffees.json';
     localDrinkList.push(drinkArray);
     const test = checkArray(currentDrinkList);
     console.log(test);
+    printTotalPrice(totalPrice, drinkArray[1]);
     printCurrentDrinks(localDrinkList);
   };
 
@@ -77,11 +92,20 @@ import coffees from './coffees.json';
     });
   };
 
+  const printTotalPrice = (totalPrice, newOrder) => {
+    const total = subtract(totalPrice, newOrder);
+    $totalPrice.innerHTML = `${total}`;
+  };
+
 
   const init = () => {
     JSONdata();
     printDrinks();
     document.querySelectorAll(`.price__button`).forEach($button => $button.addEventListener(`click`, getClickedDrink));
+    if ($remove) {
+      $remove.forEach($button => $button.addEventListener(`click`, getRemoveDrink));
+    }
+
   };
   init();
 }
