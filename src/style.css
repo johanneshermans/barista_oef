@@ -51,10 +51,9 @@ nav {
 .content {
   grid-column: 2 span;
   grid-row: 3 span;
-
 }
 
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 624px) {
 
   body {
     display: flex;

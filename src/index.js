@@ -5,7 +5,9 @@ import coffees from './coffees.json';
   const $priceList = document.querySelector(`.prices__list`);
   const $allOrders = document.querySelector(`.all__orders`);
   const $totalPrice = document.querySelector(`.total__price__real`);
-  const $remove = document.querySelector(`.remove`);
+  const $remove = document.querySelectorAll(`.order`);
+  const $order = document.querySelector(`.orders__wrapper`);
+  const $empty = document.querySelector(`.emptystate`);
   const allDrinks = [];
   const currentDrinkList = [];
   let localDrinkList = [];
@@ -54,11 +56,6 @@ import coffees from './coffees.json';
     addCurrentDrink(currentDrink, makeNum(currentPrice));
   };
 
-  const getRemoveDrink = e => {
-    console.log(`test`);
-    const currentPrice = e.currentTarget.querySelector(`.order__price`).innerHTML;
-    console.log(currentPrice);
-  };
 
   const addCurrentDrink = (drink, price) => {
     const drinkArray = [];
@@ -77,6 +74,7 @@ import coffees from './coffees.json';
   };
 
   const printCurrentDrinks = arr => {
+    handleEmpty();
     arr.forEach(drink => {
       $allOrders.innerHTML += `
             <li class="order">
@@ -88,7 +86,8 @@ import coffees from './coffees.json';
                 x
               </button>
             </li>
-            <hr>`;
+            <hr>
+            `;
     });
   };
 
@@ -97,14 +96,21 @@ import coffees from './coffees.json';
     $totalPrice.innerHTML = `${total}`;
   };
 
+  const handleEmpty = () => {
+    if (currentDrinkList.length === 0) {
+      console.log(`leeg`);
+    } else if (currentDrinkList.length !== 0) {
+      $empty.classList.add(`hide`);
+      $order.classList.remove(`hide`);
+    }
+  };
+
 
   const init = () => {
+    handleEmpty();
     JSONdata();
     printDrinks();
     document.querySelectorAll(`.price__button`).forEach($button => $button.addEventListener(`click`, getClickedDrink));
-    if ($remove) {
-      $remove.forEach($button => $button.addEventListener(`click`, getRemoveDrink));
-    }
 
   };
   init();

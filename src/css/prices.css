@@ -1,6 +1,6 @@
 .prices {
   background-color: var(--backgroundColor);
-  padding: 3em;
+  padding: 3em 3em 0 3em;
 }
 
 .price {
@@ -27,7 +27,7 @@
   padding: 1em;
 }
 
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 624px) {
 
   .prices {
     background-color: var(--backgroundColor);
