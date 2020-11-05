@@ -55,6 +55,22 @@ hr {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.emptystate {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.please {
+  margin-bottom: 2em;
+  opacity: 20%;
+}
+
+.emptystate__content {
+  font-size: 1.5em;
+}
+
 @media screen and (max-width: 624px) {
 
   .content {
@@ -84,21 +100,5 @@ hr {
   .total {
     font-size: 2em;
     padding: 1em 1.5em;
-  }
-
-  .emptystate {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .please {
-    margin-bottom: 2em;
-    opacity: 20%;
-  }
-
-  .emptystate__content {
-    font-size: 1.5em;
   }
 }

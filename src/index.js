@@ -111,7 +111,6 @@ import coffees from './coffees.json';
     JSONdata();
     printDrinks();
     document.querySelectorAll(`.price__button`).forEach($button => $button.addEventListener(`click`, getClickedDrink));
-
   };
   init();
 }
