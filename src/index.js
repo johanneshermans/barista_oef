@@ -1,17 +1,17 @@
 import './style.css';
 import coffees from './coffees.json';
+let totalPrice = 0;
 
 {
   const $priceList = document.querySelector(`.prices__list`);
   const $allOrders = document.querySelector(`.all__orders`);
   const $totalPrice = document.querySelector(`.total__price__real`);
-  const $remove = document.querySelectorAll(`.order`);
   const $order = document.querySelector(`.orders__wrapper`);
   const $empty = document.querySelector(`.emptystate`);
   const allDrinks = [];
   const currentDrinkList = [];
   let localDrinkList = [];
-  let totalPrice = 0;
+
 
   const subtract = (Price, newOrder) => {
     const sum = Price + newOrder;
@@ -63,15 +63,17 @@ import coffees from './coffees.json';
     drinkArray.push(price);
     currentDrinkList.push(drinkArray);
     localDrinkList.push(drinkArray);
-    const test = checkArray(currentDrinkList);
-    console.log(test);
+    console.log(currentDrinkList);
+    currentDrinkList.forEach(drink => {
+      if (drinkArray.includes(drink)) {
+        console.log(`test`);
+      }
+    });
+
     printTotalPrice(totalPrice, drinkArray[1]);
     printCurrentDrinks(localDrinkList);
   };
 
-  const checkArray = array => {
-    return new Set(array).size !== array.length;
-  };
 
   const printCurrentDrinks = arr => {
     handleEmpty();
